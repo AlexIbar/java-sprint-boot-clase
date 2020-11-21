@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaforg">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleados</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+
+    <div class="container my-2">
+        <div class="card">
+            <div class="card-body">
+                <div th:switch="${employees}" class="container my-5">
+                    <p class="my-5">
+                        <a href="#" class="btn btn-success">
+                            <i class="fas fa-user-plus ml-2">Adicionar Empleado</i></a>
+                    </p>
+                    <div class="col-md-10">
+                        <h2 th:case="null">No hay datos!</h2>
+                        <div th:case="*">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Apellido</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Editar</th>
+                                        <th scope="col">Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="employee: ${employees}">
+                                        <td th:text="${employee.firstName}"></td>
+                                        <td th:text="${employee.lastName}"></td>
+                                        <td th:text="${employee.email}"></td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary">
+                                                <i class="fas fa-user-edit ml-2"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-danger">
+                                                <i class="fas fa-user-times ml-2"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
